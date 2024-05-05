@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  .slider {
+    height: 400px; /* Chiều cao mong muốn của slider */
+    margin-top: 100px; /* Đẩy phần trên xuống dưới */
+    margin-bottom: auto; /* Đẩy phần dưới lên trên */
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: grid; /* Sử dụng grid để căn giữa */
+    align-items: center; /* Căn giữa theo chiều dọc */
+  }
+
+  .slide-track {
+    display: flex;
+    width: calc(250px * 18); /* Độ rộng của toàn bộ nội dung cuộn */
+    animation: scroll 40s linear infinite; /* Cuộn tự động */
+    justify-content: center; /* Căn giữa các phần tử slide */
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-250px * 9)); /* Di chuyển toàn bộ nội dung 18 ảnh */
+    }
+  }
+
+  .slide {
+    height: 200px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 100px;
+    transition: transform 0.5s ease-in-out, filter 0.5s ease;
+    position: relative; /* Đặt vị trí tương đối để có thể sử dụng z-index */
+    z-index: 1; /* Ẩn ảnh khi chưa được hiển thị */
+    margin-right: 5px; /* Khoảng cách giữa các ảnh */
+  }
+
+  .slide img {
+    width: 100%; /* Đảm bảo ảnh lấp đầy slide */
+    height: 100%; /* Đảm bảo ảnh lấp đầy slide */
+    object-fit: cover; /* Đảm bảo hình ảnh không bị vặn khi thu phóng */
+  }
+
+  .slide:not(.active) img {
+    filter: blur(5px); /* Loại bỏ hiệu ứng mờ cho ảnh không phải là ảnh hiện tại */
+  }
+
+  .active {
+    transform: translate(-50%, -50%) scale(1.5); /* Hiển thị ảnh hiện tại lớn lên */
+    z-index: 2; /* Đảm bảo ảnh hiển thị ở trên cùng */
+    filter: none; /* Loại bỏ hiệu ứng mờ */
+  }
+</style>
+</head>
+<body>
+<div class="slider">
+    <div class="slide-track">
+      <div class="slide active">
+        <img src="https://gcs.tripi.vn/public-tripi/tripi-feed/img/474074pKa/anh-nen-hoa-dep_025505724.jpg" height="800" width="700" alt="" />
+      </div>
+      <div class="slide">
+        <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2024/01/hinh-nen-hoa-42.jpg"height="800" width="700" alt="" />
+      </div>
+      <div class="slide">
+        <img src="https://cdn.pixabay.com/photo/2021/10/04/11/20/cosmos-6680031_1280.jpg" height="800" width="700" alt="" />
+      </div>
+      <div class="slide active">
+        <img src="https://gcs.tripi.vn/public-tripi/tripi-feed/img/474074pKa/anh-nen-hoa-dep_025505724.jpg" height="800" width="700" alt="" />
+      </div>
+      
+      <div class="slide">
+        <img src="https://encrypted-tbn0.gstatic.com/images?https://cdn.sforum.vn/sforum/wp-content/uploads/2024/01/hinh-nen-hoa-5.jpg" height="800" width="700" alt="" />
+      </div>
+      <div class="slide">
+        <img src="https://images.fpt.shop/unsafe/filters:quality(5)/fptshop.com.vn/uploads/images/tin-tuc/165827/Originals/batch_tong-hop-50-hinh-nen-hoa-dep-kho-cuong-cho-dien-thoai-may-tinh-15.jpg" height="800" width="700" alt="" />
+      </div>
+      
+      <div class="slide">
+        <img src="https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-hoa-hong-hinh-nen-hoa-dep-cho-iphone-didongviet-3@2x-576x1024.jpg" height="800" width="700" alt="" />
+      </div>
+      <div class="slide">
+        <img src="https://i.pinimg.com/564x/c3/31/19/c33119ab1fe928847360435893b6cd98.jpg" height="800" width="700" alt="" />
+      </div>
+      <div class="slide">
+        <img src="https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-hoa-hong-hinh-nen-hoa-dep-cho-iphone-didongviet-3@2x-576x1024.jpg"height="800" width="700"alt="" />
+      </div>
+      <div class="slide">
+        <img src="https://inkythuatso.com/uploads/thumbnails/800/2022/05/1-hinh-nen-hoa-cuc-hoa-mi-inkythuatso-11-11-04-05.jpg" height="800" width="700" alt="" />
+      </div>
+      <div class="slide">
+        <img src="https://2.bp.blogspot.com/-YSvJZ2XolBo/W1WDT11IveI/AAAAAAAABeQ/APG2q44dplcclsfFs9JxzmYIlJBl3xXjQCLcBGAs/s640/anh-hoa-dep-nhat-the-gioi.jpg" height="800" width="700" alt="" />
+      </div>
+      <div class="slide">
+        <img src="https://2.bp.blogspot.com/-YSvJZ2XolBo/W1WDT11IveI/AAAAAAAABeQ/APG2q44dplcclsfFs9JxzmYIlJBl3xXjQCLcBGAs/s640/anh-hoa-dep-nhat-the-gioi.jpg" height="800" width="700" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const slider = document.querySelector('.slider');
+    const slideTrack = document.querySelector('.slide-track');
+    const slides = Array.from(slideTrack.querySelectorAll('.slide'));
+
+    let isAnimating = false;
+    let currentSlide = 0;
+
+    function resetAnimation() {
+      slides.forEach((slide, index) => {
+        if (index === currentSlide) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+    }
+
+    function animateSlide() {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      // Tính toán vị trí giữa của slider
+      const sliderRect = slider.getBoundingClientRect();
+      const sliderCenterX = sliderRect.left + sliderRect.width / 2;
+
+      // Tìm slide nào gần vị trí giữa nhất
+      let closestSlide = slides[0];
+      let closestDistance = Math.abs(sliderCenterX - closestSlide.getBoundingClientRect().left);
+      slides.forEach((slide) => {
+        const distance = Math.abs(sliderCenterX - slide.getBoundingClientRect().left);
+        if (distance < closestDistance) {
+          closestSlide = slide;
+          closestDistance = distance;
+        }
+      });
+
+      // Kích hoạt hiệu ứng phóng to và làm mờ cho slide đó
+      closestSlide.classList.add('active');
+      slides.forEach((slide) => {
+        if (slide !== closestSlide) {
+          slide.classList.remove('active');
+        }
+      });
+
+      setTimeout(() => {
+        isAnimating = false;
+      }, 2000); // Điều chỉnh thời gian phóng to
+    }
+
+    resetAnimation();
+    setInterval(animateSlide, 5000); // Điều chỉnh khoảng thời gian chuyển đổi
+  </script>
+</body>
+</html>
